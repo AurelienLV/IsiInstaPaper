@@ -7,6 +7,7 @@ require_once __DIR__.'/repertory.php'; //a link has a repertory
  */
 class Link {
 
+    private $id; //Link's id
     private $title; //a link has a title
     private $content; //a link has a content
     private $creationDate; //a link has a date (new date when edited link)
@@ -20,6 +21,14 @@ class Link {
     //To instance a link just has an url
     public function __construct($url) {
         $this->url = $url;
+    }
+    
+    function getId() {
+        return $this->id;
+    }
+
+    function setId($id) {
+        $this->id = $id;
     }
     
     public function getTitle() {

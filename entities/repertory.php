@@ -6,6 +6,7 @@ require_once __DIR__.'/person.php'; //a repertory belows to an user
  */
 class Repertory {
     
+    private $id; //Repertory's id
     private $name; //a repertory has a name
     private $forever; //a repertory can be no deletable (boolean)
     private $bookmarklet; //a repertory can provide a bookmarklet (boolean)
@@ -28,6 +29,14 @@ class Repertory {
         else {
             $bookmarklet = false;
         }
+    }
+    
+    function getId() {
+        return $this->id;
+    }
+
+    function setId($id) {
+        $this->id = $id;
     }
     
     function getName() {

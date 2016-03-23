@@ -7,6 +7,7 @@ require_once __DIR__.'/repertory.php'; //an user can have an array of links
  */
 class Person {
     
+    private $id; //Person's id
     private $email; //an user has an email
     private $passwordHash; //an user has an protected password
     private $username; //an user can have an username
@@ -20,6 +21,14 @@ class Person {
         $this->repertories = array();
         $this->email = $email;
         $this->$passwordHash = $passwordHash;
+    }
+    
+    function getId() {
+        return $this->id;
+    }
+
+    function setId($id) {
+        $this->id = $id;
     }
     
     public function getEmail() {
