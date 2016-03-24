@@ -1,0 +1,27 @@
+<nav class="buttons">
+    <a href="{{ "like?id=" ~ idlink }}" title="like">Like</a>
+    <nav class="move">
+        <a href="#" title="move">Move</a>
+        <ul>
+            {% for rep in repertories %}
+                <li><a href="
+                       {{ "move?id=" ~ idlink ~ "&rep=" ~ idrep }}
+                       " title="">{{ repertory_name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </nav>
+    <a href="{{ "archive?id=" ~ idlink }}" title="archive">Archive</a>
+    <a href="{{ "delete?id=" ~ idlink }}" title="delete">Delete</a>
+    <nav class="share">
+        <a href="#" title="share">Share</a>
+        <ul>
+            <li><a href="{{ "share_email?id=" ~ idlink }}" 
+                   title="share_email">By email</a></li>
+            <li><a href="{{ "share_fb?id=" ~ idlink }}" 
+                   title="share_fb">By Facebook</a></li>
+            <li><a href="{{ "share_tt?id=" ~ idlink }}" 
+                   title="share_tt">By Twitter</a></li>
+        </ul>
+    </nav>
+</nav>

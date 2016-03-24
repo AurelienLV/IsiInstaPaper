@@ -1,0 +1,32 @@
+{% extends "layout.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+    
+{% block page %}
+    <div class="content">
+    <h2>{{ repertory_name }}</h2> - 
+    <a href="#" title="edit_rep" class="edit">Edit</a>
+    
+    <div class="links">
+    {% for link in links %}
+        <h3>
+            <a href="{{ "read?id=" ~ title_link }}" title=" {{ title_link }}">
+                {{ title_link }}
+            </a>
+        </h3>
+        <h4>
+            <a href="{{ url_link }}" title="{{ url_link }}">{{ url_link }}</a>
+        </h4>
+        <p>
+            {{ content_part }}
+        </p>
+        <div class="date_link">{{ date_link }}</div>
+        
+        {{ include("buttons.twig") }}
+                           
+    {% endfor %}
+    </div>
+    </div>
+{% endblock %}

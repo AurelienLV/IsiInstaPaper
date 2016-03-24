@@ -1,12 +1,17 @@
 <?php
 
-// Home page
-$app->get('/', function () {
-    //require_once '/model/personFinder.php';
+$app->register(new Silex\Provider\TwigServiceProvider(), array(
+    'twig.path' => __DIR__.'/../views',
+));
+
+// Links page
+$app->get('/', function () use ($app) {
+    require_once '/controllers/linksController.php';
     
-    ob_start();             // start buffering HTML output
-    require_once '/views/home.php';
-    $home = ob_get_clean(); // assign HTML output to $view
-    
-    return $home;
+    $controller = LinksController::getInstance();
+    return $app['twig']->render("links.twig", $controller->getArrayVar());
+});
+
+$app->get('/login', function () use ($app) {
+    return $app['twig']->render("login.twig");
 });

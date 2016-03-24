@@ -1,0 +1,178 @@
+body {
+    background-color: #ffff88;
+}
+
+img {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+}
+
+h1 {
+    font-size: 20px;
+    display: inline-block;
+    width: 20%;
+}
+
+h2 {
+    display: inline-block;
+}
+
+h3 {
+    border-top: 1px solid black;
+    margin-bottom: 0;
+}
+
+h4 {
+    margin-top: 0;
+    font-size: 12px;
+}
+
+header {
+    
+}
+
+form {
+    
+}
+
+.form {
+    width: 48%;
+    margin: auto;
+    border: 1px solid gold;
+    padding: 1px;
+}
+
+legend {
+    text-align: center;
+    text-decoration: underline;
+}
+
+fieldset {
+    border: none;
+}
+
+button {
+
+}
+
+label {
+    display: block;
+}
+
+input {
+
+}
+
+.form input {
+    display: block;
+    width: 95%
+}
+
+.profile_menu {
+    float: right;
+}
+
+.profile_menu:hover ul, .move:hover ul, .share:hover ul {
+    left: auto;
+    padding: 0;
+    margin: 0;
+    width: 130px;
+}
+
+.profile_menu ul, .move ul, .share ul {
+    background-color: white;
+    position: absolute;
+    left: -999em;
+    text-align: left;
+    z-index: 1000;
+}
+
+.main_menu {
+    float: left;
+    width: 200px;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.main_menu button, .main_menu input {
+    width: 80%;
+}
+
+.links {
+    display: inline-block;
+    width: 70%;
+    margin-left: 6%;
+}
+
+li {
+    list-style: none;
+}
+
+ul {
+    
+}
+
+p {
+    
+}
+
+.addlink {
+    display: inline-block;
+    width: 70%;
+}
+
+.addlink input {
+    display: inline-block;
+    width: 65%;
+    height: 18px;
+}
+
+.addlink button {
+    display: inline-block;
+    width: 10%;
+    vertical-align: bottom;
+}
+
+.edit {
+    display: inline-block;
+}
+
+.content {
+    display: block;
+}
+
+.repertories {
+    
+}
+
+.share {
+    
+}
+
+.buttons li {
+    display: inline-block;
+}
+
+a:link, a:visited {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover, a:active {
+    color: grey;
+    text-decoration: none;
+}
+
+@media screen and (min-width:451px) {
+    .form {
+        display: inline-block;
+    }
+}
+@media screen and (max-width:450px) {
+    .form {
+        display: block;
+        margin-bottom: 20px;
+    }
+}

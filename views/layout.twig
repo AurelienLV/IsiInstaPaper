@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    {% block stylesheets %}
+        <link href="{{ app.request.basepath }}/views/style.css" 
+              rel="stylesheet" media="all" />
+    {% endblock %}
+    <title>IsiInstaPaper</title>
+</head>
+<body>
+    <header>
+        <h1>IsiInstaPaper</h1>
+        
+        <div class="addlink">
+            <form method="post" id="add_link">
+                <input type="url" name="link" id="link" />
+            </form>
+            <button type="submit" form="add_link" value="Add link">Add link</button>
+        </div>
+        
+        <nav class="profile_menu">
+            <a href="#" title="profile">
+                {% if username == null %}
+                    {{ ">>> " ~ email }}
+                {% else %}
+                    {{ ">>> " ~ username }}
+                {% endif %}
+            </a>
+            {% if avatar != null %}
+                <img src="{{ avatar }}" title="avatar" alt="avatar" />
+            {% endif %}
+            <ul>
+                <li><a href="#" title="archive_all">Archive all</a></li>
+                <li><a href="#" title="edit_username">Edit username</a></li>
+                <li><a href="#" title="edit_avatar">Edit avatar</a></li>
+                <li><a href="#" title="signout">Sign out</a></li>
+                <li><a href="#" title="delete_account">Delete account</a></li>
+            </ul>
+        </nav>
+    </header>
+	
+    <nav class="main_menu">
+        <ul>
+            <li><a href="home" title="home">Home</a></li>
+            <li><a href="liked" title="liked">Liked</a></li>
+            <li><a href="archive" title="archive">Archive</a></li>
+            <li><a href="videos" title="videos">Videos</a></li>
+        </ul>
+        <ul>
+            {% for repertory in repertories %}
+                <li><a href="{{ "rep_" ~ idrepertory }}" 
+                       title="{{ "rep_" ~ repertory }}">
+                        {{ repertory_name }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+        
+        <form method="post" id="add_repertory">
+            <input type="text" name="add_repertory" id="add_rep" />
+        </form>
+        <button type="submit" form="add_repertory" value="Add Repertory">
+            Add Folder
+        </button>
+    </nav>
+        
+    {% block page %}
+        {# Page content #}
+    {% endblock %}
+</body> 
+</html>

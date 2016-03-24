@@ -1,0 +1,18 @@
+{% extends "layout.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block page %}
+    <div class="content">
+        <h2>{{ title_link }}</h2>
+        <a href="#" title="edit_rep">Edit</a>
+        {{ include("buttons.twig") }}
+
+        <div class="link">
+            {{ content_part }}
+        </div>
+    </div>
+    
+{% endblock %}
