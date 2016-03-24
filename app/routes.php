@@ -15,3 +15,7 @@ $app->get('/', function () use ($app) {
 $app->get('/login', function () use ($app) {
     return $app['twig']->render("login.twig");
 });
+
+$app->get('/read', function () use ($app) {
+    return $app['twig']->render("content.twig");
+});
