@@ -48,16 +48,53 @@ class LinksController {
     }
     
     public function manage() {
-        if(filter_input(INPUT_POST, 'link',
-                FILTER_DEFAULT, FILTER_REQUIRE_ARRAY) != null) {
-            LinkGateway::getInstance()->save(
-                    filter_input(INPUT_POST, 'link',
-                    FILTER_DEFAULT, FILTER_REQUIRE_ARRAY));
+        if(filter_input(INPUT_POST, 'link') != null) {
+            $this->getHTTP(filter_input(INPUT_POST, 'link'));
         }
-        else if(filter_input(INPUT_POST, 'add_repertory',
-                FILTER_DEFAULT, FILTER_REQUIRE_ARRAY) != null) {
+        else if(filter_input(INPUT_POST, 'add_repertory') != null) {
             
         }
+    }
+    
+    private function getHTTP($link) {
+        // Initiate the curl session
+        $ch = curl_init();
+        // Set the URL
+        curl_setopt($ch, CURLOPT_URL, $link);
+        // Allow the headers
+        curl_setopt($ch, CURLOPT_HEADER, false);
+        // Return the output instead of displaying it directly
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        // Execute the curl session
+        $output = curl_exec($ch);
+        // Close the curl session
+        curl_close($ch);
+        
+        $var = $this->prepareSave($output, $link);
+        $video = false;
+        $idrep = filter_input(INPUT_GET, 'rep') != null ?
+                filter_input(INPUT_GET, 'rep') : null;
+        LinkGateway::getInstance()->save(
+                $link,
+                $var['html'],
+                $var['title'],
+                $idrep,
+                $video);
+    }
+    
+    private function prepareSave($content, $link) {
+        libxml_use_internal_errors(true);
+        $dom = new DOMDocument();
+        $dom->loadHTML($content);
+        //Images
+        $images = $dom->getElementsByTagName('img');
+        foreach ($images as $image) {
+            $image->setAttribute('src', $link . $image->getAttribute('src'));
+        }
+        $html = $dom->saveHTML();
+        //Title
+        $title = $dom->getElementsByTagName('title')[0]->nodeValue;
+        return ['html' => $html, 'title' => $title];
     }
     
 }

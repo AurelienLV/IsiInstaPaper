@@ -14,18 +14,28 @@ $app->get('/login', function () use ($app) {
 // Links page
 $app->get('/', function () use ($app) {
     require_once '/controllers/linksController.php';
-    
+    $controller = LinksController::getInstance();
     session_start();
     if($_SESSION['login'] == true) {
-        $controller = LinksController::getInstance();
-        $controller->manage();
-        
         return $app['twig']->render("links.twig", $controller->getArrayVar());
     }
     else {
         return $app->redirect($app["url_generator"]->generate("login"));
     }
 })->bind("home");
+
+$app->post('/', function () use ($app) {
+    require_once '/controllers/linksController.php';
+    $controller = LinksController::getInstance();
+    session_start();
+    if($_SESSION['login'] == true) {
+        $controller->manage();
+        return $app['twig']->render("links.twig", $controller->getArrayVar());
+    }
+    else {
+        return $app->redirect($app["url_generator"]->generate("login"));
+    }
+});
 
 $app->post('/login', function () use ($app) {
     require_once '/controllers/loginController.php';

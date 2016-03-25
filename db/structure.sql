@@ -16,7 +16,6 @@ create table repertory (
 	name varchar(20) not null,
 	forever boolean not null,
 	bookmarklet boolean not null,
-	avatar varchar(500),
 	idperson integer unsigned not null,
 	primary key (id),
 	CONSTRAINT fk_repertory_id FOREIGN KEY (idperson) REFERENCES person(id)
@@ -31,7 +30,7 @@ create table link (
 	video boolean not null,
 	liked boolean not null,
 	note varchar(1000),
-	idrepertory integer unsigned not null,
+	idrepertory integer unsigned null,
 	primary key (id),
 	CONSTRAINT fk_link_id FOREIGN KEY (idrepertory) REFERENCES repertory(id)
 ) engine=innodb character set utf8 collate utf8_unicode_ci;

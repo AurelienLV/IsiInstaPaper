@@ -53,8 +53,8 @@
         </ul>
         <ul>
             {% for repertory in repertories %}
-                <li><a href="{{ "rep_" ~ idrepertory }}" 
-                       title="{{ "rep_" ~ repertory }}">
+                <li><a href="{{ "?rep=" ~ idrepertory }}" 
+                       title="{{ repertory_name }}">
                         {{ repertory_name }}
                     </a>
                 </li>

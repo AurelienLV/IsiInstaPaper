@@ -25,10 +25,15 @@ class LinkGateway {
    }
    
    //Gateway only. Usage : $this->connection->executeQuery('query')
-   public function save($url) {
-       $query = "INSERT INTO link (id, title, content, creationDate, url,"
+   public function save($url, $content, $title, $idrep, $video) {
+       $date = date('d-m-Y H:i');
+       $videoStr = $video?"true":"false";
+       $idrepStr = $idrep==null?'NULL':strval($idrep);
+       $query = "INSERT INTO link (id, title, content, creationdate, url,"
               . "video, liked, note, idrepertory) "
-              . "VALUES(".$url.");
+              . "VALUES(NULL,'".$title."','".$content."',".$date.","
+              . "'".$url."',".$videoStr.",false,NULL,$idrepStr)";
+       print_r($query);
        $this->connection->executeQuery($query);
    }
 }
