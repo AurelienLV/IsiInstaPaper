@@ -26,10 +26,6 @@ class Link {
     function getId() {
         return $this->id;
     }
-
-    function setId($id) {
-        $this->id = $id;
-    }
     
     public function getTitle() {
         return $this->title;
@@ -101,10 +97,6 @@ class Link {
     
     function getPerson() {
         return $this->person;
-    }
-
-    function setPerson($person) {
-        $this->person = $person;
     }
     
 }

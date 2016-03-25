@@ -1,5 +1,8 @@
 <?php
 require_once 'connection.php';
+require_once '/../entities/person.php';
+require_once '/../entities/link.php';
+require_once '/../entities/repertory.php';
 
 /**
  * Row Data Gateway : Link's gateway
@@ -22,5 +25,10 @@ class LinkGateway {
    }
    
    //Gateway only. Usage : $this->connection->executeQuery('query')
-
+   public function save($url) {
+       $query = "INSERT INTO link (id, title, content, creationDate, url,"
+              . "video, liked, note, idrepertory) "
+              . "VALUES(".$url.");
+       $this->connection->executeQuery($query);
+   }
 }

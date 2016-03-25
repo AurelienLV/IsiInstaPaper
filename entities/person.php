@@ -16,19 +16,18 @@ class Person {
     private $avatar; //an user can have a picture as avatar
     
     //To instance an user just has an email and a password (as InstaPaper)
-    public function __construct($email, $passwordHash) {
+    public function __construct($id, $email, $passwordHash, $username, $avatar){
         $this->links = array();
         $this->repertories = array();
+        $this->id = $id;
         $this->email = $email;
-        $this->$passwordHash = $passwordHash;
+        $this->passwordHash = $passwordHash;
+        $this->username = $username;
+        $this->avatar = $avatar;
     }
     
     function getId() {
         return $this->id;
-    }
-
-    function setId($id) {
-        $this->id = $id;
     }
     
     public function getEmail() {

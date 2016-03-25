@@ -1,5 +1,8 @@
 <?php
 require_once 'connection.php';
+require_once '/../entities/person.php';
+require_once '/../entities/link.php';
+require_once '/../entities/repertory.php';
 
 /**
  * Row Data Gateway : Person's finders
@@ -22,5 +25,41 @@ class PersonFinder {
    }
    
    //Finders only. Usage : $this->connection->executeQuery('query')
-
+   public function findByEmailAndPwd($email, $pwdHash) {
+       $query = "SELECT * "
+              . "FROM person "
+              . "WHERE email = '" . $email . "' "
+              . "AND passwordHash = '" . $pwdHash . "' "
+              . "LIMIT 1";
+       $userQuery = $this->connection->executeQuery($query);
+       if(!empty($userQuery)) {
+            $user = new Person(
+               $userQuery[0]['id'],
+               $userQuery[0]['email'],
+               $userQuery[0]['passwordHash'],
+               $userQuery[0]['username'],
+               $userQuery[0]['avatar']
+               );
+       }
+       else {
+           $user = null;
+       }
+       return $user;
+   }
+   
+   public function findByEmail($email) {
+       $query = "SELECT * "
+              . "FROM person "
+              . "WHERE email = '" . $email . "' "
+              . "LIMIT 1";
+       $userQuery = $this->connection->executeQuery($query);
+       if(!empty($userQuery)) {
+           $bool = true;
+       }
+       else {
+           $bool = false;
+       }
+       return $bool;
+   }
+   
 }

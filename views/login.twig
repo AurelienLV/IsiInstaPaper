@@ -10,15 +10,19 @@
     <header>
         <h1>IsiInstaPaper</h1>
     </header>
-	
+    
+    <div class="error_message">
+        {{ error_message }}
+    </div>
+    
     <div class="form">
     <form method="post" id="signin">
         <fieldset>
             <legend>Sign in</legend>
             <label for="email_signin">Email</label>
-            <input type="email" name="email_signin" id="email_signin" />
+            <input type="email" name="person_signin[email]" id="email_signin" />
             <label for="pwd_signin">Password</label>
-            <input type="password" name="pwd_signin" id="pwd_signin" />
+            <input type="password" name="person_signin[pwd]" id="pwd_signin" />
         </fieldset>
     </form>
     <button type="submit" form="signin" value="Sign in">Sign in</button>
@@ -29,9 +33,9 @@
        <fieldset>
             <legend>Sign up</legend>
             <label for="email_signup">Email</label>
-            <input type="email" name="email_signup" id="email_signup" />
+            <input type="email" name="person_signup[email]" id="email_signup" />
             <label for="pwd_signup">Password</label>
-            <input type="password" name="pwd_signup" id="pwd_signup" />
+            <input type="password" name="person_signup[pwd]" id="pwd_signup" />
         </fieldset>
     </form>
     <button type="submit" form="signup" value="Sign up">Sign up</button> 

@@ -5,7 +5,7 @@ drop table if exists person CASCADE;
 create table person (
 	id integer unsigned not null auto_increment,
 	email varchar(255) not null unique,
-	passwordHash varchar(20) not null,
+	passwordHash varchar(1000) not null,
 	username varchar(20) unique,
 	avatar varchar(500),
 	primary key (id)

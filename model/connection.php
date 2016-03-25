@@ -9,7 +9,7 @@ Class Connection {
     private $con;
     
     private function __construct() {
-        $this->dsn = 'mysql:host=localhost;dbname=isiInstaPaper';
+        $this->dsn = 'mysql:host=localhost;dbname=isiinstapaper';
         $this->con = new PDO($this->dsn, 'admin', 'admin');
     }
     
@@ -23,6 +23,8 @@ Class Connection {
    public function executeQuery($query) {
        $stmt = $this->con->prepare($query);
        $stmt->execute();
+       $result = $stmt->fetchAll();
+       return $result;
    }
 
 }

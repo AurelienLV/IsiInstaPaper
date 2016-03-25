@@ -34,7 +34,7 @@
                 <li><a href="#" title="archive_all">Archive all</a></li>
                 <li><a href="#" title="edit_username">Edit username</a></li>
                 <li><a href="#" title="edit_avatar">Edit avatar</a></li>
-                <li><a href="#" title="signout">Sign out</a></li>
+                <li><a href="signout" title="signout">Sign out</a></li>
                 <li><a href="#" title="delete_account">Delete account</a></li>
             </ul>
         </nav>
@@ -42,7 +42,11 @@
 	
     <nav class="main_menu">
         <ul>
-            <li><a href="home" title="home">Home</a></li>
+            <li>
+                <a href="{{ app.url_generator.generate("home") }}" title="home">
+                    Home
+                </a>
+            </li>
             <li><a href="liked" title="liked">Liked</a></li>
             <li><a href="archive" title="archive">Archive</a></li>
             <li><a href="videos" title="videos">Videos</a></li>

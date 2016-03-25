@@ -1,4 +1,10 @@
 <?php
+require_once '/../model/personFinder.php';
+require_once '/../model/personGateway.php';
+require_once '/../model/linkFinder.php';
+require_once '/../model/linkGateway.php';
+require_once '/../model/repertoryFinder.php';
+require_once '/../model/repertoryGateway.php';
 
 /**
  * Controller for links view
@@ -37,8 +43,21 @@ class LinksController {
         return self::$instance;
     }
     
-    function getArrayVar() {
+    public function getArrayVar() {
         return $this->arrayVar;
+    }
+    
+    public function manage() {
+        if(filter_input(INPUT_POST, 'link',
+                FILTER_DEFAULT, FILTER_REQUIRE_ARRAY) != null) {
+            LinkGateway::getInstance()->save(
+                    filter_input(INPUT_POST, 'link',
+                    FILTER_DEFAULT, FILTER_REQUIRE_ARRAY));
+        }
+        else if(filter_input(INPUT_POST, 'add_repertory',
+                FILTER_DEFAULT, FILTER_REQUIRE_ARRAY) != null) {
+            
+        }
     }
     
 }

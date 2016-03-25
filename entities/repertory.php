@@ -34,10 +34,6 @@ class Repertory {
     function getId() {
         return $this->id;
     }
-
-    function setId($id) {
-        $this->id = $id;
-    }
     
     function getName() {
         return $this->name;
@@ -67,10 +63,6 @@ class Repertory {
 
     function getPerson() {
         return $this->person;
-    }
-
-    function setPerson($person) {
-        $this->person = $person;
     }
     
 }
